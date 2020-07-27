@@ -8,19 +8,23 @@ import org.openqa.selenium.support.PageFactory;
 public class Tests extends WebDriverSettings {
 
     @Test
+    @Description(value = "В список в результате больше трёх")
     public void testPOYandexResultMoreThanThree(){
         chromeDriver.get("https://www.yandex.ru/");
-        PageObjectYandex pageObjectYandex = new PageObjectYandex(chromeDriver);
-        pageObjectYandex.find("гладиолус");
+        PageObjectYandex pageObjectYandex = new PageObjectYandex(chromeDriver, "гладиолус");
         System.out.println(pageObjectYandex.getSearchWebItems().size());
         pageObjectYandex.getCollectResults().stream().forEach(System.out::println);
-        //resultSearch.stream().forEach(x-> System.out.println(x.get("NAME_PAGE").toString()));
-        Steps.checkContainsName(pageObjectYandex.getCollectResults(),"Шпажник — Википедия", chromeDriver);
+        Steps.checkPOYandexResultMoreThanThree(pageObjectYandex.getCollectResults(), chromeDriver);
+    }
 
-        Assertions.assertTrue(
-                pageObjectYandex.getSearchWebItems().size() > 3
-                , "Список с результатом поиска имеет размер не более трёх элементов"
-        );
+    @Test
+    @Description(value = "Спсок в результате не должен быть больше нуля (негативный тест)")
+    public void testPOYandexResultMoreThanThreeNegative(){
+        chromeDriver.get("https://www.yandex.ru/");
+        PageObjectYandex pageObjectYandex = new PageObjectYandex(chromeDriver, "");
+        System.out.println(pageObjectYandex.getSearchWebItems().size());
+        pageObjectYandex.getCollectResults().stream().forEach(System.out::println);
+        Steps.checkPOYandexResultMoreThanThreeNegative(pageObjectYandex.getCollectResults(), chromeDriver);
     }
 
     @Test
@@ -30,7 +34,7 @@ public class Tests extends WebDriverSettings {
         PageObjectYandex pageObjectYandex = new PageObjectYandex(chromeDriver, "гладиолус");
         System.out.println(pageObjectYandex.getSearchWebItems().size());
         pageObjectYandex.getCollectResults().stream().forEach(System.out::println);
-        Steps.checkContainsName(pageObjectYandex.getCollectResults(),"2Шпажник — Википедия", chromeDriver);
+        Steps.checkContainsName(pageObjectYandex.getCollectResults(),"Гладиолус - Википедия", chromeDriver);
     }
 
     @Test
