@@ -1,5 +1,6 @@
 package practica;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.PageFactory;
@@ -23,24 +24,23 @@ public class Tests extends WebDriverSettings {
     }
 
     @Test
+    @Description(value = "Тест что есть ссылка Гладиолус - Википедия")
     public void testPOYandexResultContains(){
         chromeDriver.get("https://www.yandex.ru/");
         PageObjectYandex pageObjectYandex = new PageObjectYandex(chromeDriver, "гладиолус");
-//        pageObjectYandex.find("гладиолус");
         System.out.println(pageObjectYandex.getSearchWebItems().size());
         pageObjectYandex.getCollectResults().stream().forEach(System.out::println);
-        //resultSearch.stream().forEach(x-> System.out.println(x.get("NAME_PAGE").toString()));
-        Steps.checkContainsName(pageObjectYandex.getCollectResults(),"Шпажник — Википедия", chromeDriver);
+        Steps.checkContainsName(pageObjectYandex.getCollectResults(),"2Шпажник — Википедия", chromeDriver);
+    }
 
-
-       /* chromeDriver.get("https://www.yandex.ru");
-        PageObjectYandex pageObject = new PageObjectYandex(chromeDriver);
-        pageObject.find("гладиолус");
-        System.out.println(pageObject.getSearchWebItems().size());
-        Assertions.assertTrue(
-                pageObject.getSearchWebItems().stream().anyMatch(x->x.getText().contains("Гладиолус - Википедия"))
-                , "Заданный текст не найден"
-        );*/
+    @Test
+    @Description(value = "Негативный Тест что есть ссылка Гладиолус - Википедия ")
+    public void testPOYandexResultContainsNegative(){
+        chromeDriver.get("https://www.yandex.ru/");
+        PageObjectYandex pageObjectYandex = new PageObjectYandex(chromeDriver, "гладиолус");
+        System.out.println(pageObjectYandex.getSearchWebItems().size());
+        pageObjectYandex.getCollectResults().stream().forEach(System.out::println);
+        Steps.checkContainsNameNegative(pageObjectYandex.getCollectResults(),"Гладиолус — Википедия", chromeDriver);
     }
 
     @Test

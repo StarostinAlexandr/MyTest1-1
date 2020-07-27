@@ -10,7 +10,6 @@ import java.util.Map;
 public class Steps {
 
     @Step("Шаг 1. Проверка наличия имени: {name}")
-//    public static void checkContainsName(List<Map<String,Object>> resultSearch, String name, WebDriver driver){
     public static void checkContainsName(List<String> resultSearch, String name, WebDriver driver){
         if(resultSearch.stream().anyMatch(x -> x.contains(name))){
             Assertions.assertTrue(true);
@@ -18,6 +17,17 @@ public class Steps {
         else {
             CustomUtils.getScreen(driver);
             Assertions.assertTrue(false,"Не найдено: "+ name);
+        }
+    }
+
+    @Step("Шаг 1. Проверка наличия имени: {name} (негативный тест)")
+    public static void checkContainsNameNegative(List<String> resultSearch, String name, WebDriver driver){
+        if(resultSearch.stream().anyMatch(x -> x.contains(name))){
+            Assertions.assertFalse(true, "Не должен быть найден: "+ name);
+            CustomUtils.getScreen(driver);
+        }
+        else {
+            Assertions.assertFalse(false);
         }
     }
 
