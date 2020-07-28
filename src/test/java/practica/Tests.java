@@ -72,3 +72,4 @@ public class Tests extends WebDriverSettings {
         Steps.checkContainsNameNegative(pageFactoryYandex.getCollectResults(),"Гладиолус — Википедия", chromeDriver);
     }
 }
+
