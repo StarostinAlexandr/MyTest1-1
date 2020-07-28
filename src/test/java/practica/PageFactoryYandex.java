@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PageFactoryYandex {
-    private WebDriver chromeDriver;
-    private WebDriver driver;
+//    private WebDriver chromeDriver;
+//    private WebDriver driver;
 
     @FindAll(@FindBy(how = How.XPATH, using="//h2[@class=\"organic__title-wrapper typo typo_text_l typo_line_m\"]"))
     private List<WebElement> searchWebItems = new ArrayList<>();
@@ -22,7 +22,7 @@ public class PageFactoryYandex {
 //    @FindAll(@FindBy(how = How.XPATH, using="//*[@class=\"organic__title-wrapper typo typo_text_l typo_line_m\"]"))
 //    private String selectorSearchItems;
 
-    @FindBy(how = How.CSS, css=".mini-suggest__input")
+/*    @FindBy(how = How.CSS, css=".mini-suggest__input")
     WebElement searchField;
 
     @FindBy(how= How.CSS, css=".mini-suggest__button")
@@ -33,7 +33,7 @@ public class PageFactoryYandex {
 
     public List<WebElement> getListResult() {
         return listResult;
-    }
+    }*/
     /*public PageFactoryYandex(WebDriver driver, String search){
         this.driver=driver;
         this.driver.get("https://www.yandex.ru/search?text="+search);
@@ -54,11 +54,11 @@ public class PageFactoryYandex {
 //      return   searchWebItems =driver.findElements(By.xpath(selectorSearchItems));
 //    }
 
-    public void find(String wordFind){
+ /*   public void find(String wordFind){
         searchField.click();
         searchField.sendKeys(wordFind);
         searchButton.click();
-    }
+    }*/
 
 
 }

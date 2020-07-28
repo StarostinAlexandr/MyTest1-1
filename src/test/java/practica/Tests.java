@@ -56,7 +56,7 @@ public class Tests extends WebDriverSettings {
 //        pageFactoryYandex.findAll();
 //        PageFactoryYandex pageFactoryYandex2 = PageFactoryYandex.initElements(chromeDriver,PageFsctoryBell.class);
 //        PageFactoryYandex pageFactoryYandex = new PageFactoryYandex(chromeDriver, "гладиолус");
-        System.out.println(pageFactoryYandex.getListResult().size());
+//        System.out.println(pageFactoryYandex.getListResult().size());
         System.out.println(pageFactoryYandex.getCollectResults().size());
 //        pageFactoryYandex.getCollectResults().stream().forEach(System.out::println);
         Steps.checkYandexResultMoreThanThree(pageFactoryYandex.getCollectResults(), chromeDriver);
