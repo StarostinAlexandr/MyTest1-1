@@ -49,29 +49,21 @@ public class Tests extends WebDriverSettings {
     @Test
     @Description(value = "В результате список больше трёх (PageFactory)")
     public void testPFYandexResultMoreThanThree(){
-        chromeDriver.get("https://www.yandex.ru/search?text="+ "гладиолус");
-
+        chromeDriver.get("https://www.yandex.ru/search?text=" + "гладиолус");
         PageFactoryYandex pageFactoryYandex = PageFactory.initElements(chromeDriver,PageFactoryYandex.class);
-//        pageFactoryYandex.find("гладиолус");
-//        pageFactoryYandex.findAll();
-//        PageFactoryYandex pageFactoryYandex2 = PageFactoryYandex.initElements(chromeDriver,PageFsctoryBell.class);
-//        PageFactoryYandex pageFactoryYandex = new PageFactoryYandex(chromeDriver, "гладиолус");
-//        System.out.println(pageFactoryYandex.getListResult().size());
         System.out.println(pageFactoryYandex.getCollectResults().size());
-//        pageFactoryYandex.getCollectResults().stream().forEach(System.out::println);
+        pageFactoryYandex.getCollectResults().stream().forEach(System.out::println);
         Steps.checkYandexResultMoreThanThree(pageFactoryYandex.getCollectResults(), chromeDriver);
 
     }
 
     @Test
+    @Description(value = "Тест что есть ссылка Гладиолус - Википедия")
     public void testPFYandexResultContains(){
+        chromeDriver.get("https://www.yandex.ru/search?text=" + "гладиолус");
+        PageFactoryYandex pageFactoryYandex = PageFactory.initElements(chromeDriver,PageFactoryYandex.class);
+//        System.out.println(pageFactoryYandex.getCollectResults().size());
+        Steps.checkContainsName(pageFactoryYandex.getCollectResults(),"Гладиолус — Википедия", chromeDriver);
 
-       /* chromeDriver.get("https://yandex.ru");
-        PageFactoryYandex pageFactory = PageFactory.initElements(chromeDriver,PageFactoryYandex.class);
-        pageFactory.find("гладиолус");
-        Assertions.assertTrue(
-                pageFactory.getListResult().stream().anyMatch(x->x.getText().contains("Гладиолус - Википедия"))
-                , "Заданный текст не найден"
-        );*/
     }
 }
