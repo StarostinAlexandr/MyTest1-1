@@ -19,6 +19,15 @@ public class PageObjectYandex {
 
     private WebDriver chromeDriver;
     private List<WebElement> listResult;
+
+    public PageObjectYandex(WebDriver driver, String search){
+        this.driver=driver;
+        this.driver.get("https://www.yandex.ru/search?text="+search);
+        searchWebItems =driver.findElements(By.xpath(selectorSearchItems));
+
+    }
+
+
     public List<String> getCollectResults() {
         searchWebItems.stream().forEach(x->collectResults.add(x.getText()));
         return collectResults;
@@ -31,12 +40,6 @@ public class PageObjectYandex {
     WebElement searchField;
     WebElement searchButton;
 
-    public PageObjectYandex(WebDriver driver, String search){
-        this.driver=driver;
-        this.driver.get("https://www.yandex.ru/search?text="+search);
-        searchWebItems =driver.findElements(By.xpath(selectorSearchItems));
-
-    }
 
     PageObjectYandex(WebDriver chromeDriver) {
         this.chromeDriver = chromeDriver;

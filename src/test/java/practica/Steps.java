@@ -10,7 +10,7 @@ import java.util.Map;
 public class Steps {
 
     @Step("Шаг 1. Проверка что результатов больше трёх ")
-    public static void checkPOYandexResultMoreThanThree(List<String> resultSearch, WebDriver driver){
+    public static void checkYandexResultMoreThanThree(List<String> resultSearch, WebDriver driver){
         if(resultSearch.size() > 3){
             Assertions.assertTrue(true);
         }
@@ -22,7 +22,7 @@ public class Steps {
     }
 
     @Step("Шаг 1. Проверка что результате список не должен быть больше нуля (негативный тест)")
-    public static void checkPOYandexResultMoreThanThreeNegative(List<String> resultSearch, WebDriver driver){
+    public static void checkYandexResultMoreThanThreeNegative(List<String> resultSearch, WebDriver driver){
         if(resultSearch.size() > 0){
             Assertions.assertFalse(true
                     , "Список с результатом поиска не должен быть больше нуля ");
@@ -56,12 +56,6 @@ public class Steps {
     }
 
 
-
-//    @Step("Шаг 2. Перейдём по ссылке с текстом {textTitle}")
-   /* @Step("Шаг 2. Проверка длыны списка с результатом поиска по слову {textTitle} больше трех ")
-    public static void checkLenghtResultMoreThanThree(PageObjectGoogleWithSearch googleWithSearch, String textTitle){
-        Assertions.assertTrue(googleWithSearch.goPage(textTitle), "Страница "+textTitle+" не найдена");
-    }*/
 
 
 
