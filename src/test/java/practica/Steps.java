@@ -22,7 +22,7 @@ public class Steps {
     }
 
     @Step("Шаг 1. Проверка что результате список не должен быть больше нуля (негативный тест)")
-    public static void checkYandexResultMoreThanThreeNegative(List<String> resultSearch, WebDriver driver){
+    public static void checkYandexResultMoreThanZeroNegative(List<String> resultSearch, WebDriver driver){
         if(resultSearch.size() > 0){
             Assertions.assertFalse(true
                     , "Список с результатом поиска не должен быть больше нуля ");
